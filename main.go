@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/linuxr/terragraph/cmds"
+)
 
 func main() {
-	fmt.Println("hello terragraph")
+	cmds.Execute()
 }
