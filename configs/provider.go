@@ -21,8 +21,8 @@ type Provider struct {
 type ProResource struct {
 	Name string `mapstructure:"name"`
 
-	IsDisplay bool   `mapstructure:"isDisplay"` // 资源是否显示
-	Group     string `mapstructure:"group"`     // 资源分组的名称
+	IsDisplay bool   `mapstructure:"isDisplay"` // 资源类型是否显示
+	Group     string `mapstructure:"group"`     // 资源类型分组的名称
 	Type      string `mapstructure:"type"`      // 资源类型
 }
 
