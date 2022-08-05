@@ -6,7 +6,7 @@ import (
 	"github.com/tidwall/gjson"
 )
 
-func ParseResources(module gjson.Result, nodes []models.Node) ([]models.Node, error) {
+func ParseNodesFromTfState(module gjson.Result, nodes []models.Node) ([]models.Node, error) {
 	var err error
 	if nodes == nil {
 		nodes = make([]models.Node, 0)
@@ -43,7 +43,7 @@ func ParseResources(module gjson.Result, nodes []models.Node) ([]models.Node, er
 	if childModules.Exists() && childModules.IsArray() {
 		for _, cModule := range childModules.Array() {
 			// fmt.Printf("child module: %v\n", cModule)
-			nodes, err = ParseResources(cModule, nodes)
+			nodes, err = ParseNodesFromTfState(cModule, nodes)
 			if err != nil {
 				return nodes, err
 			}
@@ -51,4 +51,26 @@ func ParseResources(module gjson.Result, nodes []models.Node) ([]models.Node, er
 	}
 
 	return nodes, nil
+}
+
+func ParseEdgeFromNodes(nodes []models.Node) ([]models.Edge, error) {
+	edges := make([]models.Edge, 0)
+	// 创建 nodes map，address 作为key，用于判断 depends_on 依赖的是否是资源
+	m := make(map[string]string)
+	for _, n := range nodes {
+		m[n.Address] = n.Id
+	}
+
+	for _, n := range nodes {
+		for _, depend := range n.DependsOn {
+			if id, ok := m[depend]; ok {
+				edges = append(edges, models.Edge{
+					SourceId: n.Id,
+					TargetId: id,
+				})
+			}
+		}
+	}
+
+	return edges, nil
 }
