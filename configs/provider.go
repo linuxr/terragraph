@@ -7,14 +7,14 @@ import (
 	"github.com/spf13/viper"
 )
 
-type ProviderType int
+type ProviderType string
 
 const (
-	ProviderAlicloud ProviderType = 1
+	ProviderAlicloud ProviderType = "alicloud"
 )
 
 type Provider struct {
-	Name      string        `mapstructure:"name"`
+	Type      string        `mapstructure:"type"`
 	Resources []ProResource `mapstructure:"resources"`
 }
 

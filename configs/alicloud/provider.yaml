@@ -1,5 +1,5 @@
 ---
-name: "alicloud"
+type: "alicloud"
 resources:
   - name: "default"
     isDisplay: true
