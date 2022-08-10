@@ -1,6 +1,7 @@
 package parsers
 
 import (
+	"github.com/linuxr/terragraph/configs"
 	"github.com/linuxr/terragraph/models"
 	"github.com/linuxr/terragraph/utils"
 	"github.com/tidwall/gjson"
@@ -51,6 +52,43 @@ func ParseNodesFromTfState(module gjson.Result, nodes []models.Node) ([]models.N
 	}
 
 	return nodes, nil
+}
+
+// 先比较 addres，再比较 type
+func ParseNodesWithConfig(nodes []models.Node, providers []configs.Provider) ([]models.Node, error) {
+	for i, node := range nodes {
+		res := findNodeSettings(node, providers)
+		if res != nil {
+			nodes[i].Group = res.Group
+			nodes[i].IsDisplay = res.IsDisplay
+		}
+	}
+
+	return nodes, nil
+}
+
+func findNodeSettings(node models.Node, providers []configs.Provider) *configs.ProResource {
+	var resByType *configs.ProResource
+	// 先找 provider，再找resource
+	for _, p := range providers {
+		if p.Type != node.ProviderName {
+			continue
+		}
+
+		// resource 先按照address 匹配，再按照 type 匹配
+		for _, r := range p.Resources {
+			if r.Address == node.Address {
+				resByType = &r
+				break
+			}
+
+			if resByType == nil && r.Type == node.Type {
+				resByType = &r
+			}
+		}
+	}
+
+	return resByType
 }
 
 func ParseEdgeFromNodes(nodes []models.Node) ([]models.Edge, error) {

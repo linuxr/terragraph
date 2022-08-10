@@ -1,6 +1,6 @@
 ---
 providers:
-  - type: "alicloud"
+  - type: "iac-registry.idcos.com/aliyun/alicloud"
     resources:
       - name: "default"
         isDisplay: true

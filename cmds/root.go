@@ -17,6 +17,13 @@ var (
 			fmt.Printf("input: %s\n", inputPath)
 			fmt.Printf("provider: %s\n", provider)
 			fmt.Printf("config: %s\n", configPath)
+
+			// TODO: 解析nodes信息
+			// TODO: 解析配置信息
+			// TODO: 将配置信息覆盖nodes的配置
+			// TODO: 根据nodes生成edges
+
+			// TODO: 导出json用于G6绘图
 			return nil
 		},
 	}

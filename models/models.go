@@ -8,7 +8,8 @@ type Node struct {
 	Address       string   // 资源address
 	Type          string   // 资源类型，和 provider 相关
 	DependsOn     []string // 依赖的资源
-	ComboId       string   // 分组的ID
+	Group         string   // 分组
+	IsDisplay     bool     // 是否显示
 }
 
 type Edge struct {
