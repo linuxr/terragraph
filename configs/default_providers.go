@@ -1,7 +1,7 @@
-// Code generated for package alicloud by go-bindata DO NOT EDIT. (@generated)
+// Code generated for package configs by go-bindata DO NOT EDIT. (@generated)
 // sources:
-// configs/alicloud/provider.yaml
-package alicloud
+// configs/default_providers.yaml
+package configs
 
 import (
 	"bytes"
@@ -77,22 +77,22 @@ func (fi bindataFileInfo) Sys() interface{} {
 	return nil
 }
 
-var _configsAlicloudProviderYaml = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\x94\xcc\x3b\x0e\xc2\x30\x10\x84\xe1\xde\xa7\x18\xb9\xf7\x05\x5c\x73\x8f\x68\x63\x2f\xc8\xd2\x12\x5b\xfb\x28\x72\x7b\x24\xa0\x48\x41\x43\x3b\xff\xe8\x2b\xa5\xa4\x83\x9e\x5c\x91\x49\x46\x93\x19\x3d\x27\x65\x9b\xa1\x8d\xad\x26\xa0\xe0\xdb\x3b\xdf\x29\xc4\x73\x02\x80\x61\xb7\x61\x4b\xe8\xac\x70\x0d\x7e\x6f\x0f\x9d\xb1\x2a\xf2\x38\xcc\xe9\x68\xfc\x79\xfa\xb9\xae\xfa\x76\xad\xff\xdb\x7d\xff\xad\x52\xdf\xb7\x26\x61\xce\x9a\xd3\x2b\x00\x00\xff\xff\x1e\x30\x07\x32\xd5\x00\x00\x00")
+var _configsDefault_providersYaml = []byte("\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff\xe4\x8f\x41\xca\x02\x31\x0c\x46\xf7\x3d\xc5\x47\xf7\xbd\x40\xd7\xff\x3d\x86\x4c\x9b\x5f\x0a\xb5\x2d\x49\xa3\xcc\xed\x65\x44\x14\x07\xdc\xb8\x35\xcb\x8f\x17\x1e\x2f\x84\xe0\x86\xf4\x4b\xc9\x2c\x1a\x1d\x10\x30\xb7\xc1\x11\x9e\x6a\x49\xb5\x5b\xf6\x0e\x00\x84\xb5\x9b\x24\xbe\x33\xfb\x05\x34\x3a\xef\x5c\xe6\x7f\xb2\x3a\xfd\x63\x07\x8a\xfe\x15\x1d\x95\xb6\x88\x29\xc6\xcf\xfd\x24\xdd\x46\x84\x2f\x4d\x27\xb5\xc4\xaf\x8f\x83\x71\x39\x12\xdf\xbb\xf2\xfa\xd9\x42\x79\x5d\x52\x35\x9d\x2c\xde\xbd\x95\x5f\xf5\x37\xa2\x6f\x01\x00\x00\xff\xff\xa0\x69\x12\x30\xfd\x01\x00\x00")
 
-func configsAlicloudProviderYamlBytes() ([]byte, error) {
+func configsDefault_providersYamlBytes() ([]byte, error) {
 	return bindataRead(
-		_configsAlicloudProviderYaml,
-		"configs/alicloud/provider.yaml",
+		_configsDefault_providersYaml,
+		"configs/default_providers.yaml",
 	)
 }
 
-func configsAlicloudProviderYaml() (*asset, error) {
-	bytes, err := configsAlicloudProviderYamlBytes()
+func configsDefault_providersYaml() (*asset, error) {
+	bytes, err := configsDefault_providersYamlBytes()
 	if err != nil {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "configs/alicloud/provider.yaml", size: 213, mode: os.FileMode(420), modTime: time.Unix(1659517251, 0)}
+	info := bindataFileInfo{name: "configs/default_providers.yaml", size: 509, mode: os.FileMode(420), modTime: time.Unix(1660035088, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
@@ -149,7 +149,7 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"configs/alicloud/provider.yaml": configsAlicloudProviderYaml,
+	"configs/default_providers.yaml": configsDefault_providersYaml,
 }
 
 // AssetDir returns the file names below a certain
@@ -194,9 +194,7 @@ type bintree struct {
 
 var _bintree = &bintree{nil, map[string]*bintree{
 	"configs": &bintree{nil, map[string]*bintree{
-		"alicloud": &bintree{nil, map[string]*bintree{
-			"provider.yaml": &bintree{configsAlicloudProviderYaml, map[string]*bintree{}},
-		}},
+		"default_providers.yaml": &bintree{configsDefault_providersYaml, map[string]*bintree{}},
 	}},
 }}
 

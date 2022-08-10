@@ -13,7 +13,7 @@ BUILD_DIR=$(PWD)/build
 all: provider build
 
 provider:
-	$(GOBINDATA) -o configs/alicloud/alicloud.go -pkg alicloud configs/alicloud/provider.yaml
+	$(GOBINDATA) -o configs/default_providers.go -pkg configs configs/default_providers.yaml
 
 build:
 	$(GOBUILD) -o $(BUILD_DIR)/terragraph .

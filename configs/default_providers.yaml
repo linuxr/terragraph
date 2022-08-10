@@ -1,0 +1,23 @@
+---
+providers:
+  - type: "alicloud"
+    resources:
+      - name: "default"
+        isDisplay: true
+        group: "instance"
+        type: "alicloud_instance"
+      - name: "default"
+        isDisplay: true
+        group: "db"
+        type: "alicloud_adb_cluster"
+
+  - type: "aws"
+    resources:
+      - name: "default"
+        isDisplay: true
+        group: "instance"
+        type: "alicloud_instance"
+      - name: "default"
+        isDisplay: true
+        group: "db"
+        type: "alicloud_adb_cluster"

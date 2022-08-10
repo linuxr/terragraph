@@ -30,7 +30,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&inputPath, "input", "i", "", "输入文件的路径(HCL, tfplan.json, tfstate.json)")
 
 	rootCmd.Flags().StringVar(&provider, "provider", "alicloud", "provider 类型")
-	rootCmd.Flags().StringVarP(&configPath, "config", "c", "", "配置文件的路径")
+	rootCmd.Flags().StringVarP(&configPath, "config", "c", "", "自定义配置文件的路径")
 
 	rootCmd.MarkFlagRequired("input")
 	rootCmd.MarkFlagRequired("config")
