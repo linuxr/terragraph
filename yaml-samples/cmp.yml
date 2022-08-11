@@ -1,11 +1,12 @@
 ---
-- type: "iac-registry.idcos.com/aliyun/alicloud"
-  resources:
-    - name: ""
-      isDisplay: true
-      group: "ingress"
-      type: "ingress"
-    - name: ""
-      isDisplay: true
-      group: "instance"
-      type: "alicloud_instance"
+providers:
+  - type: "iac-registry.idcos.com/aliyun/alicloud"
+    resources:
+      - name: ""
+        isDisplay: true
+        group: "ingress"
+        type: "ingress"
+      - name: ""
+        isDisplay: true
+        group: "instance"
+        type: "alicloud_instance"

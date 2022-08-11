@@ -1,11 +1,25 @@
 package parsers
 
 import (
+	"io/ioutil"
+
 	"github.com/linuxr/terragraph/configs"
 	"github.com/linuxr/terragraph/models"
 	"github.com/linuxr/terragraph/utils"
+	"github.com/spf13/cast"
 	"github.com/tidwall/gjson"
 )
+
+func ParseTfState(fp string) ([]models.Node, error) {
+	content, err := ioutil.ReadFile(fp)
+	if err != nil {
+		return nil, err
+	}
+
+	module := gjson.Get(cast.ToString(content), "values.root_module")
+
+	return ParseNodesFromTfState(module, nil)
+}
 
 func ParseNodesFromTfState(module gjson.Result, nodes []models.Node) ([]models.Node, error) {
 	var err error

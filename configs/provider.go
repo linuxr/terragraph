@@ -60,7 +60,7 @@ func getProviders(content []byte) (*Providers, error) {
 }
 
 // MergeProviders 合并默认的provider配置和自定义的provider配置
-func MergeProviders(defaultProviders, providers []Provider) map[string][]ProResource {
+func MergeProviders(defaultProviders, providers []Provider) []Provider {
 	mResources := make(map[string][]ProResource)
 
 	// 默认资源配置
@@ -78,7 +78,15 @@ func MergeProviders(defaultProviders, providers []Provider) map[string][]ProReso
 		mResources[p.Type] = MergeResources(mResources[p.Type], p.Resources)
 	}
 
-	return mResources
+	mergedProviders := make([]Provider, 0)
+	for k, v := range mResources {
+		mergedProviders = append(mergedProviders, Provider{
+			Type:      k,
+			Resources: v,
+		})
+	}
+
+	return mergedProviders
 }
 
 // MergeResources 合并默认的资源配置和自定义的资源配置

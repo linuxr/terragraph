@@ -9,7 +9,7 @@ GORUN=$(GOCMD) run -v
 
 BUILD_DIR=$(PWD)/build
 
-.PHONY: all
+.PHONY: all build
 all: provider build
 
 provider:
