@@ -20,6 +20,7 @@ const ComboGraph = (props: { data: any }) => {
             modes: {
                 default: [
                     "drag-combo",
+                    "zoom-canvas",
                     "drag-node",
                     "drag-canvas",
                     {

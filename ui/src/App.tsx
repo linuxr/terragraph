@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         getData();
-    });
+    }, []);
 
     const getData = async () => {
         const response = await fetch("./data.json");
