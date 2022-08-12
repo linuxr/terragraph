@@ -39,17 +39,21 @@ var (
 
 			mergedProviders := configs.MergeProviders(defaultProviders.Providers, providers.Providers)
 
+			fmt.Printf("mergedProviders: %v\n", mergedProviders)
+
 			// 将配置信息覆盖nodes的配置
 			nodes, err = parsers.ParseNodesWithConfig(nodes, mergedProviders)
 			if err != nil {
 				return err
 			}
+			fmt.Printf("nodes: %v\n", nodes)
 
 			// 根据nodes生成edges
 			edges, err := parsers.ParseEdgeFromNodes(nodes)
 			if err != nil {
 				return err
 			}
+			fmt.Printf("edges: %v\n", edges)
 
 			// 导出json用于G6绘图
 			var data = struct {

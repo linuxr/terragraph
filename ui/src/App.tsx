@@ -17,9 +17,9 @@ const App: React.FC = () => {
         const responseData = await response.json();
 
         const nodes = responseData.nodes.map(
-            (item: { id: string; label: string; group: string }) => ({
+            (item: { id: string; name: string; group: string }) => ({
                 id: item.id,
-                label: item.label,
+                label: item.name,
                 comboId: item.group,
             })
         );
@@ -55,12 +55,14 @@ const App: React.FC = () => {
                 style={{ padding: "0 50px", marginTop: 64 }}
             >
                 <Breadcrumb style={{ margin: "16px 0" }}></Breadcrumb>
-                <div
-                    className="site-layout-background"
-                    style={{ padding: 24, minHeight: 380 }}
-                >
-                    {data ? <ComboGraph data={data} /> : ""}
-                </div>
+                {data.nodes.length > 0 ? (
+                    <div
+                        className="site-layout-background"
+                        style={{ padding: 24, minHeight: 380 }}
+                    >
+                        <ComboGraph data={data} />
+                    </div>
+                ) : null}
             </Content>
             <Footer style={{ textAlign: "center" }}></Footer>
         </Layout>

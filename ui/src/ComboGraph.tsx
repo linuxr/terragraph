@@ -53,6 +53,8 @@ const ComboGraph = (props: { data: any }) => {
                 },
             },
         });
+
+        console.log(data);
         graph.data(data);
         graph.render();
     });
