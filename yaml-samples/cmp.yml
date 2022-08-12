@@ -8,9 +8,9 @@ providers:
             group: "ingress"
             type: "ingress"
           - name: "default"
-            isDisplay: false
-          - name: "default"
-            isDisplay: false
+            isDisplay: true
+            group: "instance"
+            type: "alicloud_instance"
 
     - type: "iac-registry.idcos.com/idcos/ansible"
       resources:
