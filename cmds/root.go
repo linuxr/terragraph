@@ -46,7 +46,7 @@ var (
 			if err != nil {
 				return err
 			}
-			fmt.Printf("nodes: %v\n", nodes)
+			fmt.Printf("count: %d\nnodes: %v\n", len(nodes), nodes)
 
 			// 根据nodes生成edges
 			edges, err := parsers.ParseEdgeFromNodes(nodes)

@@ -2,12 +2,7 @@
 providers:
     - type: "iac-registry.idcos.com/aliyun/alicloud"
       resources:
-          - name: "cmp"
-            address: "module.ingress_nginx.ansible_host.cmp"
-            isDisplay: true
-            group: "ingress"
-            type: "ansible_host"
-          - name: "ingress_nginx"
+          - name: "nginx"
             address: "module.ingress_nginx.alicloud_instance.instance"
             isDisplay: true
             group: "ingress"
@@ -16,3 +11,11 @@ providers:
             isDisplay: false
           - name: "default"
             isDisplay: false
+
+    - type: "iac-registry.idcos.com/idcos/ansible"
+      resources:
+          - name: "cmp"
+            address: "module.ingress_nginx.ansible_host.cmp"
+            isDisplay: true
+            group: "instance"
+            type: "alicloud_instance"

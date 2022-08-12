@@ -6,9 +6,14 @@ import { Breadcrumb, Layout, Menu } from "antd";
 const { Header, Content, Footer } = Layout;
 
 const App: React.FC = () => {
-    const [data, setData] = useState({ nodes: [], edges: [], combos: [] });
+    const [data, setData] = useState<{
+        nodes: [];
+        edges: [];
+        combos: [];
+    } | null>(null);
 
     useEffect(() => {
+        setData(null);
         parseData();
     }, []);
 
@@ -55,14 +60,7 @@ const App: React.FC = () => {
                 style={{ padding: "0 50px", marginTop: 64 }}
             >
                 <Breadcrumb style={{ margin: "16px 0" }}></Breadcrumb>
-                {data.nodes.length > 0 ? (
-                    <div
-                        className="site-layout-background"
-                        style={{ padding: 24, minHeight: 380 }}
-                    >
-                        <ComboGraph data={data} />
-                    </div>
-                ) : null}
+                {data ? <ComboGraph data={data} /> : null}
             </Content>
             <Footer style={{ textAlign: "center" }}></Footer>
         </Layout>

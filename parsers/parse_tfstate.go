@@ -77,6 +77,7 @@ func ParseNodesWithConfig(nodes []models.Node, providers []configs.Provider) ([]
 		if res != nil {
 			nodes[i].Group = res.Group
 			nodes[i].IsDisplay = res.IsDisplay
+			nodes[i].Name = res.Name
 		}
 
 		if nodes[i].IsDisplay {

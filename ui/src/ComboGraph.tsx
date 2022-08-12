@@ -45,6 +45,13 @@ const ComboGraph = (props: { data: any }) => {
             },
             defaultEdge: {
                 type: "line",
+                style: {
+                    radius: 20,
+                    offset: 45,
+                    endArrow: true,
+                    lineWidth: 1,
+                    stroke: "#C2C8D5",
+                },
             },
             defaultCombo: {
                 type: "rect",
@@ -59,7 +66,13 @@ const ComboGraph = (props: { data: any }) => {
         graph.render();
     });
 
-    return <div id="container" />;
+    return (
+        <div
+            id="container"
+            className="site-layout-background"
+            style={{ padding: 24, minHeight: 600 }}
+        />
+    );
 };
 
 export default ComboGraph;
