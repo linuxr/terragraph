@@ -6,16 +6,37 @@ import { Breadcrumb, Layout, Menu } from "antd";
 const { Header, Content, Footer } = Layout;
 
 const App: React.FC = () => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({ nodes: [], edges: [], combos: [] });
 
     useEffect(() => {
-        getData();
+        parseData();
     }, []);
 
-    const getData = async () => {
+    const parseData = async () => {
         const response = await fetch("./data.json");
         const responseData = await response.json();
-        setData(responseData);
+
+        const nodes = responseData.nodes.map(
+            (item: { id: string; label: string; group: string }) => ({
+                id: item.id,
+                label: item.label,
+                comboId: item.group,
+            })
+        );
+
+        const edges = responseData.edges.map(
+            (item: { sourceId: string; targetId: string }) => ({
+                source: item.sourceId,
+                target: item.targetId,
+            })
+        );
+
+        const combos = responseData.groups.map((item: string) => ({
+            id: item,
+            label: item,
+        }));
+
+        setData({ nodes, edges, combos });
     };
 
     return (

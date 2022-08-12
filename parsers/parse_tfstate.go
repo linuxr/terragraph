@@ -70,15 +70,21 @@ func ParseNodesFromTfState(module gjson.Result, nodes []models.Node) ([]models.N
 
 // 先比较 addres，再比较 type
 func ParseNodesWithConfig(nodes []models.Node, providers []configs.Provider) ([]models.Node, error) {
+	displayedNodes := make([]models.Node, 0)
+
 	for i, node := range nodes {
 		res := findNodeSettings(node, providers)
 		if res != nil {
 			nodes[i].Group = res.Group
 			nodes[i].IsDisplay = res.IsDisplay
 		}
+
+		if nodes[i].IsDisplay {
+			displayedNodes = append(displayedNodes, nodes[i])
+		}
 	}
 
-	return nodes, nil
+	return displayedNodes, nil
 }
 
 func findNodeSettings(node models.Node, providers []configs.Provider) *configs.ProResource {
@@ -125,4 +131,15 @@ func ParseEdgeFromNodes(nodes []models.Node) ([]models.Edge, error) {
 	}
 
 	return edges, nil
+}
+
+func ParseGroupsFromNodes(nodes []models.Node) []string {
+	var groups = make([]string, 0)
+	for _, n := range nodes {
+		if n.Group != "" {
+			groups = append(groups, n.Group)
+		}
+	}
+
+	return utils.RemoveDuplicatedArr(groups)
 }

@@ -53,11 +53,13 @@ var (
 
 			// 导出json用于G6绘图
 			var data = struct {
-				Nodes []models.Node `json:"nodes"`
-				Edges []models.Edge `json:"edges"`
+				Nodes  []models.Node `json:"nodes"`
+				Edges  []models.Edge `json:"edges"`
+				Groups []string      `json:"groups"`
 			}{
-				Nodes: nodes,
-				Edges: edges,
+				Nodes:  nodes,
+				Edges:  edges,
+				Groups: parsers.ParseGroupsFromNodes(nodes),
 			}
 
 			content, err := json.Marshal(&data)
