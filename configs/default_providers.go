@@ -92,7 +92,7 @@ func configsDefault_providersYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "configs/default_providers.yaml", size: 539, mode: os.FileMode(420), modTime: time.Unix(1660147549, 0)}
+	info := bindataFileInfo{name: "configs/default_providers.yaml", size: 539, mode: os.FileMode(420), modTime: time.Unix(1661069674, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
